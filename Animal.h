@@ -6,20 +6,43 @@ using namespace std;
 
 class Animal {
    public:
-      Animal(string speciesName, unsigned int discoveryYear) {
-         species = speciesName;
-         year_discovered = discoveryYear;
+      Animal(string speciesName, float heaviness, bool danger){
+      	species = speciesName;
+	weight = heaviness;
+	dang = danger;
       }
 
-      Animal() : species(""), year_discovered(0) {};
+      Animal() : species(""), weight(0.0), dang(false){};
+
+   
 
       void display() {
-         cout << species << " [" << year_discovered << "]" << endl;
+	string dangerStatus;
+
+	if (dang) {
+    		dangerStatus = "Yes";
+	} else {
+    		dangerStatus = "No";
+	}
+         cout << species << "Weight: " << weight << ", Dangerous: " << dangerStatus << endl;
+      }
+
+      //Getter functions for all parameters
+      string getSpecies() const {
+	      return species;
+      } 
+      float getWeight() const{
+	      return weight;
+      }
+      bool isDang() const{
+	      return dang;
       }
 
    private:
       string species = "";
       unsigned int year_discovered = 0;
+      float weight;
+      bool dang;
 };
 #endif
 

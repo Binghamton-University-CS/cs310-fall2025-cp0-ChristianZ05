@@ -7,13 +7,20 @@ using namespace std;
 
 class AnimalsInZoo {
 	public:
-		AnimalsInZoo(Animal animal); //With animal
-		AnimalsInZoo(); //Without animal
+		AnimalsInZoo();
+		AnimalsInZoo(unsigned int initialCap);
+
+		bool store(Animal &another_animal);
+		bool remove(const string& animal_name);
+		Animal find(const string& animal_name);
+		void readSizes(unsigned int &count, unsigned int &capacity);
+		void show() const;
+		unsigned int makeSpace(unsigned int how_many);
 		void display();
 
 	private:
-		int numAnimals;
-		Animal animal;
-
+		unsigned int numAnimals;
+		Animal* newAnimal;
+		unsigned int capacity;
 };
 #endif
